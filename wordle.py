@@ -1,13 +1,21 @@
-word = "knoll"
+import random
 
 
+legal_words = []
+with open('legal_words.txt') as f:
+    for line in f:
+        legal_words.append(line.strip())
+
+word = random.choice(legal_words)
+print(word)
+#print(legal_words)
 
 for j in range(6):
     solved = True
 
     guess = input("Input word: ")
-    if len(guess) != 5:
-        guess = input("Make sure the word is 5 letters long: ")
+    if guess not in legal_words:
+        guess = input("Word not allowed: ")
 
     imperfect = ""
     for i in range(5):
